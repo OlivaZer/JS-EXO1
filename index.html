@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Case de mon jeu-->
+    <div id="board"></div>
+
+    <script>
+        const box = document.createElement("div");
+        box.classList.add("box");
+        // Ajout du mot "Texte" à l'intérieur de la boîte
+        box.textContent = "Texte"; 
+
+        const board = document.querySelector('#board')
+        board.appendChild(box);
+
+        // Fonction pour afficher les informations dans une boîte de dialogue (alerte)
+        function showBoxInfo() {
+            // Récupère l'élément représentant le carré
+            const box = document.querySelector(".box");
+            // Obtient les styles calculés (y compris les styles CSS) de l'élément
+            const boxStyles = getComputedStyle(box);
+            // Récupère la valeur de l'attribut "class" de l'élément
+            const classOfBox = box.getAttribute("class");
+            // Récupère la couleur du texte appliquée à l'élément
+            const textColor = boxStyles.color;
+            // Récupère la couleur de fond appliquée à l'élément
+            const bgColor = boxStyles.backgroundColor;
+            // Récupère la largeur de l'élément
+            const width = boxStyles.width;
+            // Récupère la hauteur de l'élément
+            const height = boxStyles.height;
+            // Récupère la police du texte appliquée à l'élément
+            const font = boxStyles.fontFamily;
+            // Récupère la taille du texte appliquée à l'élément
+            const fontSize = boxStyles.fontSize;
+
+            //*********************************** Affichage **************************//
+
+            // Afficher les informations dans une boîte de dialogue (alerte)
+            //Le <br> ne fonctionne pas dans du JavaScript
+            alert("Informations de la forme :\n\n"
+                // Ajout du texte dans la boîte de dialogue
+                + "Texte: " + box.textContent + "\n" 
+                // Ajout de le Class CSS
+                + "Classe CSS de la forme: " + classOfBox + "\n"
+                // Ajout de la couleur du text (color) de mon texte dans la boite de dialogue 
+                + "Couleur du texte: " + textColor + "\n"
+                // Ajout du background-color dans la boite de dialogue 
+                + "Couleur de fond: " + bgColor + "\n"
+                // Ajout de la hauteur ( height) de mon carré dans la boite de dialogue
+                + "Hauteur du carré: " + height + "\n"
+                // Ajout de la largeur (width) de mon carré dans la boite de dialogue 
+                + "Largeur du carré: " + width + "\n"
+                // Ajout de la font de la police du texte de mon carré dans la boite de dialogue 
+                + "Police du texte: " + font + "\n"
+                // Ajout de la taille du texte (fontSize) de mon texte du carré dans la boite de dialogue
+                + "Taille du texte: " + fontSize + "\n");
+        }
+
+        // Ajouter un événement de clic pour afficher les informations au clic sur la forme
+        box.addEventListener("click", showBoxInfo);
+    </script>
+</body>
+</html>
